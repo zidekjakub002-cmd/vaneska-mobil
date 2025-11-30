@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Prepáč, Vanesik ❤️</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveBackground 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes moveBackground {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  .scene {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 1000px;
+    z-index: 1;
+  }
+
+  .card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+    backdrop-filter: blur(5px);
+  }
+
+  .images-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: scaleInStagger 1s ease-out;
+  }
+
+  @keyframes scaleInStagger {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .image-box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    animation: float 8s ease-in-out infinite;
+    transition: transform 0.3s;
+    position: absolute;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .image-box:active {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .image-box:nth-child(1) { 
+    animation: float1 8s ease-in-out infinite;
+    top: 10%;
+    left: 5%;
+  }
+  .image-box:nth-child(2) { 
+    animation: float2 9s ease-in-out infinite;
+    top: 60%;
+    right: 5%;
+  }
+  .image-box:nth-child(3) { 
+    animation: float3 10s ease-in-out infinite;
+    top: 20%;
+    right: 15%;
+  }
+  .image-box:nth-child(4) { 
+    animation: float4 11s ease-in-out infinite;
+    bottom: 15%;
+    left: 10%;
+  }
+
+  @media (max-width: 768px) {
+    .image-box {
+      width: 100px;
+      height: 100px;
+      font-size: 50px;
+    }
+    .image-box:nth-child(1) { 
+      top: 5%;
+      left: 5%;
+    }
+    .image-box:nth-child(2) { 
+      top: 65%;
+      right: 5%;
+    }
+    .image-box:nth-child(3) { 
+      top: 15%;
+      right: 10%;
+    }
+    .image-box:nth-child(4) { 
+      bottom: 10%;
+      left: 5%;
+    }
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(200px, -150px) rotate(90deg); }
+    50% { transform: translate(100px, 200px) rotate(180deg); }
+    75% { transform: translate(-150px, -100px) rotate(270deg); }
+  }
+
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-180px, 150px) rotate(90deg); }
+    50% { transform: translate(-100px, -200px) rotate(180deg); }
+    75% { transform: translate(170px, 100px) rotate(270deg); }
+  }
+
+  @keyframes float3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(150px, 180px) rotate(90deg); }
+    50% { transform: translate(-200px, 100px) rotate(180deg); }
+    75% { transform: translate(100px, -150px) rotate(270deg); }
+  }
+
+  @keyframes float4 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-160px, -160px) rotate(90deg); }
+    50% { transform: translate(180px, -100px) rotate(180deg); }
+    75% { transform: translate(-120px, 200px) rotate(270deg); }
+  }
+
+  .text-content {
+    font-size: 2em;
+    color: white;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    min-height: 80px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    animation: fadeIn 0.6s ease-out 0.3s both;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .text-content {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      padding: 0 15px;
+    }
+  }
+
+  .heart {
+    font-size: 120px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    transition: transform 0.2s;
+    animation: popIn 0.6s ease-out 0.6s both;
+    filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+  }
+
+  .heart:hover {
+    transform: scale(1.25) rotate(-10deg);
+    filter: drop-shadow(0 0 30px rgba(255, 107, 107, 1));
+  }
+
+  .heart:active {
+    transform: scale(1.2) rotate(-10deg);
+  }
+
+  @media (max-width: 768px) {
+    .heart {
+      font-size: 80px;
+    }
+  }
+
+  .heart.fly-left {
+    animation: flyLeft 1.2s ease-in forwards;
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0) rotate(180deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.15) rotate(0deg);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes flyLeft {
+    0% {
+      transform: translateX(0) scale(1) rotate(0deg);
+      opacity: 1;
+      filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+    }
+    100% {
+      transform: translateX(-800px) scale(0) rotate(360deg);
+      opacity: 0;
+      filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0));
+    }
+  }
+
+  .message-history {
+    display: none;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="scene">
+  <div class="card">
+    <div class="images-container" id="imagesContainer">
+      <div class="image-box">🌹</div>
+      <div class="image-box">💝</div>
+      <div class="image-box">✨</div>
+      <div class="image-box">🌟</div>
+    </div>
+    <div class="text-content" id="textContent">Vanes klikni na srdiecko...</div>
+    <div class="heart" id="heart">❤️</div>
+    <div class="message-history" id="messageHistory"></div>
+  </div>
+</div>
+
+<script>
+const messages = [
+  "Chýba mi, keď sme si písali,tie všetky dni boli oveľa jasnejšie a krajšie.Každý jeden deň som sa tešil na to že sa porozpravame po celom dni a že aj keď ti poviem hocičo tak to bude len u teba...❤️",
+  "Prosim vanes, daj mi ešte jednu šancu...",
+  "Si pre mňa veľmi dôležitá 💛",
+  "A tá vec ma mrzí každy jeden deň... 😢",
+  "Dúfam, že mi dáš raz šancu znova byť tvoj kamarát ❤️",
+  "Ďakujem, že si si to precítala...a fakt uprimne mi chýbaš"
+];
+
+let messageIndex = 0;
+const heartElement = document.getElementById('heart');
+const textContent = document.getElementById('textContent');
+const messageHistory = document.getElementById('messageHistory');
+
+heartElement.addEventListener('click', function() {
+  // Animuj srdiecko doľava
+  heartElement.classList.add('fly-left');
+
+  // Zmení text
+  if (messageIndex < messages.length) {
+    textContent.textContent = messages[messageIndex];
+    
+    // Pridaj do histórie
+    const messageItem = document.createElement('div');
+    messageItem.className = 'message-item';
+    messageItem.textContent = messages[messageIndex];
+    messageHistory.appendChild(messageItem);
+    
+    messageIndex++;
+  } else {
+    textContent.textContent = "Ďakujem! 💕";
+  }
+
+  // Po animácii odstráň staré srdiecko a vytvor nové
+  setTimeout(() => {
+    heartElement.classList.remove('fly-left');
+    heartElement.style.animation = 'none';
+    
+    // Restartuj animáciu pop-in
+    setTimeout(() => {
+      heartElement.style.animation = '';
+    }, 10);
+  }, 1000);
+});
+
+// Podpora pre touch aj pre click
+heartElement.addEventListener('touchend', function(e) {
+  e.preventDefault();
+  heartElement.click();
+});
+</script>
